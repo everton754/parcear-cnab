@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
+
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-family: "Source Sans Pro", sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  padding: 10px 10px 20px 10px;
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 20px;
+  background-color: #e2e2e2;
+}
+
+ul {
+  list-style: none;
+}
+
+.form__form {
+  width: fit-content;
+
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 10px;
+}
+.form__form > input {
+  font-size: 16px;
+}
+.form_button {
+  box-shadow: 0px 1px 0px 0px #fff6af;
+  background: linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
+  background-color: #ffec64;
+  border-radius: 6px;
+  border: 1px solid #ffaa22;
+  display: inline-block;
+  cursor: pointer;
+  color: #333333;
+  font-family: Arial;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 6px 24px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #ffee66;
+}
+.form_button:hover {
+  background: linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+  background-color: #ffab23;
+}
+.form_button:active {
+  position: relative;
+  top: 1px;
+}
+.ErrorList__ul {
+  width: fit-content;
+  height: fit-content;
+  max-height: 250px;
+  overflow-y: scroll;
+  border-radius: 4px;
+  padding: 10px;
+
+  background-color: #f3f3ff;
+
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 5px;
+}
+.ErrorList__ul::-webkit-scrollbar {
+  display: none;
+}
+.ErrorList__li {
+  font-size: larger;
+}
+
+.linkDoc__p {
+  font-size: larger;
+}
+.linkDoc__p > a {
+  font-weight: bold;
+}
+
+.StoreList__ul {
+  width: 100%;
+  overflow-x: scroll;
+
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 40px;
+}
+.StoreList__ul::-webkit-scrollbar {
+  display: none;
+}
+.StoreList__li {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 10px;
+
+  min-width: fit-content;
+  padding: 10px 20px 10px 20px;
+  border-radius: 9px;
+
+  background-color: #ff9c38;
+  -webkit-box-shadow: 5px 5px 14px -10px #000000;
+  box-shadow: 5px 5px 14px -10px #000000;
+}
+.Store__saldo {
+  font-weight: bold;
+}
+.Store__TransactionsList {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: 10px;
+
+  padding: 10px;
+  border-radius: 4px;
+  overflow-y: scroll;
+
+  background-color: #f3eae8;
+}
+.Store__TransactionsList::-webkit-scrollbar {
+  display: none;
+}
+.TransactionsList__li:nth-of-type(1n + 2) {
+  padding-top: 10px;
+  border-top: 2px solid #b8cfff;
+}

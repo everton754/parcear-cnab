@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload CNAB</title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}" />
+  </head>
+  <body>
+    <form method="POST" enctype="multipart/form-data" class="form__form">
+      {% csrf_token %} {{ form.file }}
+      <button class="form_button" type="submit">Enviar</button>
+    </form>
+
+    {% if file_errors or serializer_errors %}
+      <ul class="ErrorList__ul">
+        {% for error in file_errors %}
+          <li class="ErrorList__li">{{ error }}</li>
+        {% endfor %}
+
+        {% for field, error in serializer_errors.items %}
+          <li class="ErrorList__li">{{ field }}: {{ error }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+
+    {% if has_errors %}
+      <p class="linkDoc__p">
+        <a
+          href="https://github.com/everton754/parcear-cnab/blob/main/README.md" 
+          target="_blank"
+        >
+          Link
+        </a>
+        para documentação
+      </p>
+    {% endif %}
+
+    <ul class="StoreList__ul">
+      {% if transaction_groups %} 
+        {% for store in transaction_groups %}
+          <li class="StoreList__li">
+            <h2 class="Store__h2">{{ store.name }}</h2>
+            <p class="Store__saldo">Saldo: {{ store.get_balance }}</p>
+            <ul class="Store__TransactionsList">
+              {% for transaction in store.transactions %}
+                <li class="TransactionsList__li">
+                  <p>Tipo: {{ transaction.tipo.descricao }}</p>
+                  <p>Valor: {{ transaction.get_value }}</p>
+                  <p>CPF: {{ transaction.cpf }}</p>
+                  <p>Cartão: {{ transaction.cartao }}</p>
+                  <p>Data: {{ transaction.get_date }}</p>
+                  <p>Hora: {{ transaction.get_time }}</p>
+                  <p>Dono: {{ transaction.dono }}</p>
+                </li>
+              {% endfor %}
+            </ul>
+          </li>
+        {% endfor %}
+      {% elif not transaction_groups and not has_errors %}
+        Não há registros
+      {% endif %}
+    </ul>
+  </body>
+</html>
